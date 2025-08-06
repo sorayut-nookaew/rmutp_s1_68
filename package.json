@@ -1,0 +1,24 @@
+{
+  "name": "rmutp_s1_68",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sorayut-nookaew/rmutp_s1_68.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sorayut-nookaew/rmutp_s1_68/issues"
+  },
+  "homepage": "https://github.com/sorayut-nookaew/rmutp_s1_68#readme",
+  "dependencies": {
+    "@prisma/client": "^6.13.0",
+    "prisma": "^6.13.0"
+  }
+}
