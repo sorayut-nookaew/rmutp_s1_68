@@ -3,6 +3,11 @@
 SORAYUT NOOKAEW
 
 ## Runnig
+### Database
+```
+docker-compose up -d
+```
+### Schema
 ```
 npx prisma studio
 ```
