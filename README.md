@@ -2,6 +2,13 @@
 
 SORAYUT NOOKAEW
 
+## Required
+- Git
+- Docker & Docker Compose
+- PostgreSQL
+- Node.js
+- Prisma
+
 ## Runnig
 ### Database
 ```
