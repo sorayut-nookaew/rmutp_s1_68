@@ -2,8 +2,11 @@
   "name": "rmutp_s1_68",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +24,9 @@
     "@hono/node-server": "^1.19.0",
     "@prisma/client": "^6.14.0",
     "hono": "^4.9.2",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "devDependencies": {
     "prisma": "^6.14.0"
