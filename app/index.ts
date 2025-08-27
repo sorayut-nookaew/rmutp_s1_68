@@ -9,5 +9,8 @@ app.get("/about", (c) => {
         message: "Sorayut Nookaew"
     });
 });
+app.get("/profile", () => {
+    //logic
+});
 
 export default app;
