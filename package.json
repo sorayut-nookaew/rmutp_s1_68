@@ -1,28 +1,19 @@
 {
-  "name": "rmutp_s1_68",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sorayut-nookaew/rmutp_s1_68.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sorayut-nookaew/rmutp_s1_68/issues"
-  },
-  "homepage": "https://github.com/sorayut-nookaew/rmutp_s1_68#readme",
   "dependencies": {
     "@hono/node-server": "^1.19.0",
     "@prisma/client": "^6.14.0",
     "hono": "^4.9.2",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
+  "scripts": {
+    "build": "tsc -p app",                
+    "start": "node app/dist/server.js",  
+    "dev": "ts-node app/server.ts",      
+    "tsc": "tsc -p app && node app/dist/server.js"
+  },
+
   "devDependencies": {
     "prisma": "^6.14.0"
   }
