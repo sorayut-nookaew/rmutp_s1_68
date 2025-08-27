@@ -20,7 +20,7 @@
   },
   "include": [
     "app"
-    
+, "dist"    
   ],
   "exclude": [
     "node_modules/*"
