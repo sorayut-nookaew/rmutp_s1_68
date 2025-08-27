@@ -19,7 +19,7 @@
     "jsxFragmentFactory": "Fragment"
   },
   "include": [
-    "app/**/*.ts",
+    "app"
     
   ],
   "exclude": [
