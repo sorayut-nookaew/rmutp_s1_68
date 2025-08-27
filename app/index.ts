@@ -13,10 +13,10 @@ app.get("/about", (c) => {
         message: "Sorayut Nookaew"
     });
 });
-app.get("/profile", () => {
+app.get("/profile", async(c) => {
     //logic
-    const profiles = prisma.profile.findMany();
-    return profiles;
+    const profiles = await prisma.profile.findMany();
+    return c.json(profiles);
 });
 
 export default app;
