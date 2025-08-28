@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node dist/server.js"
   },
   "repository": {
     "type": "git",
