@@ -30,6 +30,13 @@ app.post("/profile", async(c) => {
     console.log('hash.password(after) ', passwordHash);
     body.password = passwordHash;
     console.log('body.password(replace ', body);
+
+    c.status(503);
+    return c.json({
+        message: "service unavilable foe demo",
+        data: "server error"
+    });
+
     //save to db
     body.status= false;
     const result = await prisma.profile.create({
