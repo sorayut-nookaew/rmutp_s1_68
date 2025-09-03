@@ -18,5 +18,14 @@ app.get("/profile", async(c) => {
     const profiles = await prisma.profile.findMany();
     return c.json(profiles);
 });
+app.post("/profile", async(c) => {
+    //logic to create a profile
+    const body = await c.req.json();
+    console.log('input of profile ', body);
+    
+    return c.json({
+        message: "create profile completed"
+    });
+});
 
 export default app;
