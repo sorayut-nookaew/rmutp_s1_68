@@ -1,24 +1,21 @@
 import * as crypto from "crypto";
 
-const secretKey = process.env.SECRET_KEY ?? undefined;
+// const algorithm = "aes-256-cbc";
+const algorithm = "aes-256-cbc";
+// const key = crypto.randomBytes(32);
+// const key = lovemelovedog;
+const key = 12345678901234567890123456789012;
+console.log(key ${key.toString()});
+const iv = crypto.randomBytes(16);
+console.log(iv ${iv.toString()});
+const password = 1password1234;
 
-const makeKey = crypto
-    .createHash("sha256")
-    .update(String(secretKey))
-    .digest("base64")
-    .substring(0, 32);
-const enableData = Buffer.from("123457890123456");
+const encode = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
+const encrypted = encode.update(password, "utf-8", "base64");
+const encryptedStr = encrypted + encode.final("base64");
+console.log(encode , encryptedStr);
 
-export const encode = (data: string) => {
-    const cipher = crypto.createCipheriv("aes-256-cbc", makeKey, enableData);
-    const encrypted = cipher.update(data, "utf-8", "base64");
-    const final = cipher.final("base64");
-    return encrypted + final;
-};
-
-export const decode = (data: string) => {
-    const decipher = crypto.createDecipheriv("aes-256-cbc", makeKey, enableData);
-    const encrypted = decipher.update(data, "utf-8", "base64");
-    const final = decipher.final("base64");
-    return encrypted + final;
-};
+const decode = crypto.createDecipheriv(algorithm, Buffer.from(key), iv);
+const decrypted = decode.update(encryptedStr, "base64", "utf-8");
+const decryptedStr = decrypted + decode.final("utf-8");
+console.log(decode , decryptedStr);
