@@ -28,17 +28,20 @@ function decrypt(text: string): string {
   decrypted += decipher.final("utf8");
   return decrypted;
 }
-app.get("/", (c) => c.text("Hello, World!"));
+app.get('/', (c) => c.text('Hono!'));
+app.get('/about', (c) => { return c.json({ message: "Sorayut Nookaew " }) });
+app.get("/profile", async (c) => {
+    // logic
+    const profile = await prisma.profile.findMany();
+    
+    const decodedProfiles = profile.map((p) => ({
+    ...p,
+    mobile: decrypt(p.mobile),
+    cardId: decrypt(p.cardId),
+  }));
 
-app.get("/about", (c) => {
-    return c.json({
-        message: "Sorayut Nookaew"
-    });
-});
-app.get("/profile", async(c) => {
-    //logic
-    const profiles = await prisma.profile.findMany();
-    return c.json(profiles);
+    
+    return c.json(decodedProfiles);
 });
 app.post("/profile", async(c) => {
     //logic to create a new profile
