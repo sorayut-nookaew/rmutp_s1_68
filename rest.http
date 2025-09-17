@@ -6,7 +6,7 @@ GET http://localhost:3000/
 ### About
 GET http://localhost:3000/about
 
-### Get All Profile
+### Gect All Profile
 GET http://localhost:3000/profile
 
 ### Create New Profile

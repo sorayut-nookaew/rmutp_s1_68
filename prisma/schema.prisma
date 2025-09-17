@@ -14,11 +14,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model profile {
-  id          String @id @default(uuid())
-  username    String 
-  password    String
-  mobile      String @unique @db.VarChar(255)
-  cardId      String @unique @db.VarChar(255)
-  status      Boolean
+model Profile {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  mobile   String  @unique @db.VarChar(24)
+  cardId   String  @unique @db.VarChar(24)
+  status   Boolean
 }

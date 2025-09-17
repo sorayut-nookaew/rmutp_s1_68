@@ -1,26 +1,24 @@
 import * as crypto from "crypto";
-
-const ENCRYPTION_KEY = crypto
-  .createHash("sha256")
-  .update(String(process.env.SECRET_KEY || "my-secret-key"))
-  .digest("base64")
-  .substr(0, 32); // 32 bytes key
-const IV = Buffer.from("1234567890123456");
-
-export function encode(text: string): string {
-  const cipher = crypto.createCipheriv("aes-256-cbc", ENCRYPTION_KEY, IV);
-  let encrypted = cipher.update(text, "utf8", "base64");
-  encrypted += cipher.final("base64");
-
-  console.log(`[ENCODE] input: ${text} = output: ${encrypted}`);
-  return encrypted;
-}
-
-export function decode(text: string): string {
-  const decipher = crypto.createDecipheriv("aes-256-cbc", ENCRYPTION_KEY, IV);
-  let decrypted = decipher.update(text, "base64", "utf8");
-  decrypted += decipher.final("utf8");
-
-  console.log(`[DECODE] input: ${text} = output: ${decrypted}`);
-  return decrypted;
-}
+const algorithm = "aes-256-cbc";
+const key = process.env.SECRET_KEY  
+const iv = process.env.SECRET_IV
+//ฟังก์ชันเข้ารหัส
+export const encode = (password) => {
+    console.log(`---------------------------encode > `, Buffer.from(key), Buffer.from(iv));
+    const encodeCipher = crypto.createCipheriv(algorithm, key, iv);
+    // console.log("encodeCipher ", encodeCipher);
+    const encrypted = encodeCipher.update(password, 'utf-8', 'base64');
+    const final = encrypted + encodeCipher.final('base64');
+    console.log("encrypted(final)", final, final.length);
+    return final;
+};
+//ฟังก์ชันถอดรหัส
+export const decode = (encryptedStr: any) => {
+    console.log(`---------------------------decode > `, Buffer.from(key), Buffer.from(iv));
+    const decodeCipher = crypto.createDecipheriv(algorithm, key, iv);
+    // console.log("decodeCipher ", decodeCipher);
+    const decrypted = decodeCipher.update(encryptedStr, 'base64', 'utf-8');
+    const d_final = decrypted + decodeCipher.final('utf-8');
+    console.log("decrypted(final) ", d_final);
+    return d_final;
+};
